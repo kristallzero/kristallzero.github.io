@@ -9,14 +9,14 @@
 </head>
 
 <body>
-  <p>ID: </p>
+  <span>ID: </span>
   <div class="id"></div>
-  <p>Username: </p>
+  <span>Username: </span>
   <div class="username"></div>
-  <p>Объект пользователя: </p>
+  <span>Объект пользователя: </span>
   <div class="obj"></div>
-  <p>Координаты:</p>
-  <div class="coords">Загрузка...</div>
+  <span>Координаты:</span>
+  <div class="coords"></div>
   
   <script>
     const tg = window.Telegram.WebApp;
@@ -26,10 +26,11 @@
     document.querySelector('.id').textContent = tg.initDataUnsafe.user.id;
     document.querySelector('.username').textContent = tg.initDataUnsafe.user.username;
     document.querySelector('.obj').textContent = JSON.stringify(tg.initDataUnsafe);
-    navigator.geolocation.getCurrentPosition((pos) => {
-      const { latitude, longitude } = pos.coords;
-      document.querySelector('.coords').textContent = `Широта: ${latitude} | Долгота: ${longitude}`;
-    });
+    const params = (new URL(location.href)).searchParams;
+    const latitude = params.get('latitude');
+    const longitude = params.get('longitude');
+    document.querySelector('.coords').textContent = `Широта: ${latitude} | Долгота: ${longitude}`;
+    
   </script>
 </body>
 
