@@ -9,14 +9,21 @@
 </head>
 
 <body>
-  <p>123</p>
-  <div class="test"></div>
+  <p>User ID: </p>
+  <div class="id"></div>
+  <p>Username: </p>
+  <div class="username"></div>
+  <p>Object: </p>
+  <div class="obj"></div>
+  
   <script>
     const tg = window.Telegram.WebApp;
     console.log(tg.initDataUnsafe.user.username);
     console.log(tg.initDataUnsafe.user);
     console.log(tg.initDataUnsage);
-    document.querySelector('.test.').textContent = tg.initDataUnsafe.user.username);
+    document.querySelector('.id').textContent = tg.initDataUnsafe.user.id;
+    document.querySelector('.username').textContent = tg.initDataUnsafe.user.username);
+    document.querySelector('.obj').textContent = JSON.stringify(tg.initDataUnsafe);
   </script>
 </body>
 
