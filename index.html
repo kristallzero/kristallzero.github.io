@@ -20,7 +20,7 @@
   
   <script>
     const tg = window.Telegram.WebApp;
-    if (tg.initDataUnsafe) {
+    if (tg.initDataUnsafe.user) {
       console.log(tg.initDataUnsafe.user.username);
       console.log(tg.initDataUnsafe.user);
       console.log(tg.initDataUnsage);
