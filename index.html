@@ -9,6 +9,8 @@
 </head>
 
 <body>
+  <span>initData (string)</span>
+  <div class="data"></div>
   <span>ID: </span>
   <div class="id"></div>
   <span>Username: </span>
@@ -24,6 +26,7 @@
       console.log(tg.initDataUnsafe.user.username);
       console.log(tg.initDataUnsafe.user);
       console.log(tg.initDataUnsage);
+      document.querySelector('.data').textContent = tg.initData;
       document.querySelector('.id').textContent = tg.initDataUnsafe.user.id;
       document.querySelector('.username').textContent = tg.initDataUnsafe.user.username;
       document.querySelector('.obj').textContent = JSON.stringify(tg.initDataUnsafe);
