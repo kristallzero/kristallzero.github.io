@@ -26,11 +26,16 @@
     document.querySelector('.id').textContent = tg.initDataUnsafe.user.id;
     document.querySelector('.username').textContent = tg.initDataUnsafe.user.username;
     document.querySelector('.obj').textContent = JSON.stringify(tg.initDataUnsafe);
-    const params = (new URL(location.href)).searchParams;
+    navigator.geolocation.getCurrentPosition((pos) => {
+      const { latitude, longitude } = pos.coords;
+      document.querySelector('.coords').textContent = `Широта: ${latitude} | Долгота: ${longitude}`;
+    });
+    
+    /*const params = (new URL(location.href)).searchParams;
     const latitude = params.get('latitude');
     const longitude = params.get('longitude');
     document.querySelector('.coords').textContent = `Широта: ${latitude} | Долгота: ${longitude}`;
-    
+    */
   </script>
 </body>
 
