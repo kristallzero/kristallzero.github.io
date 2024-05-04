@@ -19,6 +19,13 @@
   <div class="obj"></div>
   <span>Координаты:</span>
   <div class="coords"></div>
+  <hr>
+  
+  button<p id="token">token</p>
+  <p id="ver">verification</p>
+  <button id="get_token">test</button>
+  <button id="verify">verify</button>
+
   
   <script>
     const tg = window.Telegram.WebApp;
@@ -35,12 +42,33 @@
       const { latitude, longitude } = pos.coords;
       document.querySelector('.coords').textContent = `Широта: ${latitude} | Долгота: ${longitude}`;
     });
+
+let token = '';
+
+  document.querySelector('/#get_token').onclick = async () => {
+    const data = await (await fetch('http://localhost:3000/get_token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id: 123 })
+    })).json();
+    document.querySelector('#token').textContent = data.token;
+    token = data.token;
     
-    /*const params = (new URL(location.href)).searchParams;
-    const latitude = params.get('latitude');
-    const longitude = params.get('longitude');
-    document.querySelector('.coords').textContent = `Широта: ${latitude} | Долгота: ${longitude}`;
-    */
+  };
+
+  document.querySelector('#verify').onclick = async () => {
+    const data = await (await fetch('http://localhost:3000/check', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({token})
+    })).json();
+    console.log(data);
+    document.querySelector('#ver').textContent = data.result;
+  };
   </script>
 </body>
 
